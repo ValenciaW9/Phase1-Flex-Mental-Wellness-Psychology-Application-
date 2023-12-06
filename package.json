@@ -1,0 +1,10 @@
+{
+  "name": "Mental-Wellness-Psychology-App",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^0.21.4"
+  }
+}
