@@ -1,70 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* CSS styles here */
-    </style>
     <title>Mental Health Care App</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <header>
         <h1>Mental Health Care App</h1>
-        <button id="refreshBtn">Refresh Data</button>
-        <input type="text" id="searchInput" placeholder="Search...">
     </header>
     <main>
-        <div id="dataContainer"></div>
+        <!-- Container to display data from the API -->
+        <div id="apiData"></div>
+
+        <!-- Username form -->
+        <div class="form-container">
+            <label for="usernameInput">Username:</label>
+            <input type="text" id="usernameInput" placeholder="Enter your username" />
+        </div>
+
+        <!-- Password form -->
+        <div class="form-container">
+            <label for="passwordInput">Password:</label>
+            <input type="password" id="passwordInput" placeholder="Enter your password" />
+        </div>
+
+        <!-- Button to fetch data -->
+        <button id="fetchButton">Fetch Data</button>
+
+        <!-- Form to enter a domain for lookup -->
+        <form id="lookupForm">
+            <div class="form-container">
+                <label for="domainInput">Domain:</label>
+                <input type="text" id="domainInput" placeholder="Enter a domain" />
+            </div>
+            <button type="submit">Lookup</button>
+        </form>
+
+        <!-- List of psychology health disorders -->
+        <ul id="disorderList">
+            <li>Anxiety Disorder</li>
+            <li>Depression</li>
+            <li>Bipolar Disorder</li>
+            <li>Obsessive-Compulsive Disorder</li>
+            <li>Post-Traumatic Stress Disorder</li>
+            <li>Schizophrenia</li>
+            <li>Eating Disorders</li>
+            <li>Borderline Personality Disorder</li>
+        </ul>
     </main>
 
-    <script>
-        const refreshBtn = document.getElementById('refreshBtn');
-        const searchInput = document.getElementById('searchInput');
-        const dataContainer = document.getElementById('dataContainer');
-
-        let allData = [];
-
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('https://api.example.com/data');
-                allData = response.data;
-                renderData(allData);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        const renderData = (data) => {
-            dataContainer.innerHTML = '';
-
-            data.forEach((item) => {
-                const card = document.createElement('div');
-                card.classList.add('card');
-                card.innerHTML = `
-                    <h2>${item.name}</h2>
-                    <p>${item.description}</p>
-                `;
-                dataContainer.appendChild(card);
-            });
-        };
-
-        const searchFilter = (event) => {
-            const searchTerm = event.target.value.toLowerCase();
-            const filteredData = allData.filter((item) => {
-                return item.name.toLowerCase().includes(searchTerm);
-            });
-            renderData(filteredData);
-        };
-
-        refreshBtn.addEventListener('click', fetchData);
-        searchInput.addEventListener('input', searchFilter);
-
-        document.addEventListener('DOMContentLoaded', fetchData);
-    </script>
+    <!-- JavaScript code for fetching data from the API -->
+    <script src="app.js"></script>
 </body>
-
 </html>

@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.form-container label {
+    margin-bottom: 0.5rem;
+}
+
+.form-container input {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+#apiData {
+    background-color: pink;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
