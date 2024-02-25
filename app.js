@@ -1,6 +1,3 @@
-
-app.js:
-
 const url = 'https://api.builtwith.com/free1/api.[xml|json]?KEY=79664c18-3279-4ec2-94d5-bbace2ddd10f&LOOKUP=[DOMAIN]';
 const options = {
     method: 'GET',
@@ -40,7 +37,8 @@ fetchButton.addEventListener('click', () => {
 
 // Add event listener to the lookup form
 const lookupForm = document.getElementById('lookupForm');
-lookupForm.addEventListener('submit', (event) =>    event.preventDefault();
+lookupForm.addEventListener('submit', (event) => {
+    event.preventDefault();
     const domainInput = document.getElementById('domainInput');
     const domain = domainInput.value;
     fetchData(domain);
