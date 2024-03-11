@@ -1,56 +1,59 @@
-const url = 'https://api.builtwith.com/free1/api.[xml|json]?KEY=79664c18-3279-4ec2-94d5-bbace2ddd10f&LOOKUP=[DOMAIN]';
-const options = {
-    method: 'GET',
+const fetchData = () => {
+  const url = 'https://api.symanto.net/personality';
+  const data = [
+    {
+      id: 1,
+      text: 'I love the service',
+      language: 'en',
+    },
+  ];
+
+  return fetch(url, {
+    method: 'POST',
     headers: {
-        'API-Key': '79664c18-3279-4ec2-94d5-bbace2ddd10f'
-    }
-};
-
-const fetchData = async (domain) => {
-    const usernameInput = document.getElementById('usernameInput');
-    const passwordInput = document.getElementById('passwordInput');
-    const username = usernameInput.value;
-    const password = passwordInput.value;
-
-    // Perform validation if needed
-    if (!username || !password) {
-        alert('Please enter both username and password');
-        return;
-    }
-
-    try {
-        const lookupUrl = url.replace('[DOMAIN]', domain);
-        const response = await fetch(lookupUrl, options);
-        const result = await response.text();
-        // Display the result in the 'apiData' container
-        document.getElementById('apiData').innerText = result;
-    } catch (error) {
-        console.error(error);
-    }
-};
-
-// Add event listener to the fetch button
-const fetchButton = document.getElementById('fetchButton');
-fetchButton.addEventListener('click', () => {
-    fetchData();
-});
-
-// Add event listener to the lookup form
-const lookupForm = document.getElementById('lookupForm');
-lookupForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const domainInput = document.getElementById('domainInput');
-    const domain = domainInput.value;
-    fetchData(domain);
-});
-
-// Add event listeners to the disorder list items
-const disorderListItems = document.querySelectorAll('#disorderList li');
-disorderListItems.forEach((item) => {
-    item.addEventListener('click', () => {
-        const selectedDisorder = item.innerText;
-        console.log(`Selected disorder: ${selectedDisorder}`);
-        // Perform actions based on the selected disorder
-        // You can update the fetchData function or add new functions to handle each disorder
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'x-api-key': '79664c18-3279-4ec2-94d5-bbace2ddd10f',
+    },
+    body: JSON.stringify(data),
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to fetch data from API');
+      }
+      return response.json();
+    })
+    .catch(error => {
+      console.error('API call failed:', error.message);
+      throw error;
     });
+};
+
+const lookupForm = document.getElementById('lookupForm');
+const domainInput = document.getElementById('domainInput1');
+
+lookupForm.addEventListener('submit', (event) => {
+  event.preventDefault(); // Prevent form submission from refreshing the page
+
+  // Get the domain input value
+  const domain = domainInput.value;
+
+//Implement the domain lookup logic here
+console.log(`Performing lookup for domain: ${domain}`);
+
+// Example code for domain lookup
+  fetch(`https://api.example.com/lookup?domain=${domain}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data); // Display the result of the domain lookup
+      })
+      .catch(error => {
+        console.error('Domain lookup failed:', error.message);
+      });
+
+  // Clear the domain input value
+  domainInput.value = '';
 });
+
+// Call the fetchData function
+fetchData();

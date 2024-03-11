@@ -1,57 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mental Health Care App</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mental Health Care App</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header>
-        <h1>Mental Health Care App</h1>
-    </header>
-    <main>
-        <!-- Container to display data from the API -->
-        <div id="apiData"></div>
+  <header>
+    <h1>Mental Health Care App</h1>
+  </header>
+  <main>
+    <!-- Container to display data from the API -->
+    <div id="apiData"></div>
 
-        <!-- Username form -->
-        <div class="form-container">
-            <label for="usernameInput">Username:</label>
-            <input type="text" id="usernameInput" placeholder="Enter your username" />
-        </div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <section>
+        <h2>About</h2>
+        <p>The Psychology Mental Health Care Application aims to provide support and resources for individuals seeking mental health care. It offers information about various mental health disorders, treatment options, and access to healthcare providers.</p>
+      </section>
+      <section>
+        <h2>More Information</h2>
+        <p>The app provides educational resources, self-help tools, and strategies for managing mental health. It also offers recommendations for books, articles, and videos related to mental health and well-being.</p>
+      </section>
+      <section>
+        <h2>Contact a Provider</h2>
+        <p>If you need to reach a mental health provider, you can contact us at:</p>
+        <p>Phone: 555-555-5555</p>
+        <p>Email: valencia90@gmail.com</p>
+      </section>
+    </div>
 
-        <!-- Password form -->
-        <div class="form-container">
-            <label for="passwordInput">Password:</label>
-            <input type="password" id="passwordInput" placeholder="Enter your password" />
-        </div>
+    <!-- Username form -->
+    <div class="form-container">
+      <label for="usernameInput">Username:</label>
+      <input type="text" id="usernameInput1" placeholder="Enter your username" />
+      <form id="lookupForm" title="Domain Lookup Form">
+    </div>
 
-        <!-- Button to fetch data -->
-        <button id="fetchButton">Fetch Data</button>
+    <!-- Password form -->
+    <div class="form-container">
+      <label for="passwordInput">Password:</label>
+      <input type="password" id="passwordInput1" placeholder="Enter your password" />
+    </div>
 
-        <!-- Form to enter a domain for lookup -->
-        <form id="lookupForm">
-            <div class="form-container">
-                <label for="domainInput">Domain:</label>
-                <input type="text" id="domainInput" placeholder="Enter a domain" />
-            </div>
-            <button type="submit">Lookup</button>
-        </form>
+    <!-- Button to fetch data -->
+    <button id="fetchButton">Fetch Data</button>
 
-        <!-- List of psychology health disorders -->
-        <ul id="disorderList">
-            <li>Anxiety Disorder</li>
-            <li>Depression</li>
-            <li>Bipolar Disorder</li>
-            <li>Obsessive-Compulsive Disorder</li>
-            <li>Post-Traumatic Stress Disorder</li>
-            <li>Schizophrenia</li>
-            <li>Eating Disorders</li>
-            <li>Borderline Personality Disorder</li>
-        </ul>
-    </main>
+    <!-- Form to enter a domain for lookup -->
+    <form id="lookupForm" title="Domain Lookup Form">
+      <div class="form-container">
+        <label for="domainInput">Domain:</label>
+        <input type="text" id="domainInput1" placeholder="Enter a domain" />
+      </div>
+      <button type="submit">Lookup</button>
+    </form>
 
-    <!-- JavaScript code for fetching data from the API -->
-    <script src="app.js"></script>
+    <!-- List of psychology health disorders -->
+    <ul id="disorderList">
+      <li>
+        <input type="checkbox" id="anxietyDisorder1" value="Anxiety Disorder" />
+        <label for="anxietyDisorder1">Anxiety Disorder</label>
+        <select id="anxietyMedication" title="Anxiety Medication">
+          <option value="Disorder-1">Schizophrenia</option>
+          <option value="Disorder-2">Anxiety Disorder</option>
+          <option value="Disorder-3">Depression</option>
+          <option value="Disorder-4">Mood Disorder</option>
+          <option value="Disorder-5">Narcissistic Personality Disorder</option>
+          <option value="Disorder-6">Dissociative Identity Disorder</option>
+          <option value="Disorder-7">Bipolar</option>
+          <option value="Disorder-8">Addictive Behaviors</option>
+          <option value="Disorder-9">Personality Disorders</option>
+          <option value="Disorder-10">Eating Disorders</option>
+          <option value="Disorder-11">Trauma and Stress-Related Disorders</option>
+        </select>
+      </li>
+      <li>
+        <input type="checkbox" id="depressionDisorder1" value="Depression" />
+        <label for="depressionDisorder1">Depression</label>
+        <select id="depressionMedication" title="Depression Medication">
+          <option value="med-1">Benzodiazepine</option>
+          <option value="med-2">Benzodiazepine</option>
+          <option value="med-3">Seroquel</option>
+          <option value="med-4">Celexa</option>
+          <option value="med-5">Lamictal</option>
+          <!-- Add more medication options -->
+        </select>
+      </li>
+      <!-- Add similar structure for other disorders -->
+    </ul>
+
+    <!-- DSM-5 classification and treatment options -->
+    <h2>DSM-5 Classification and Treatment Options</h2>
+    <p>The DSM-5 (Diagnostic and Statistical Manual of Mental Disorders, 5th Edition) is a widely used manual for diagnosing mental health disorders. It provides a classification system and criteria for various disorders. The treatment options for each disorder may vary and can include therapy, medication, lifestyle changes, and support services. It's important to consult with a mental health professional for accurate diagnosis and treatment recommendations.</p>
+  </main>
+
+  <!-- JavaScript code -->
+  <script src="app.js"></script>
 </body>
+
 </html>

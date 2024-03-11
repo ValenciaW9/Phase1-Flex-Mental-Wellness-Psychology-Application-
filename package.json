@@ -1,24 +1,19 @@
 {
+  "name": "mental-health-care-app",
+  "version": "1.0.0",
+  "description": "A mental health care application",
+  "main": "index.js",
   "scripts": {
-    "test": "jest --transform=@babel/preset-env"
+    "test": "jest"
+  },
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.7.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.9",
-    "@babel/preset-env": "^7.23.9",
-    "@types/jest": "^29.5.12",
-    "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.17",
-    "and": "^0.0.3",
-    "babel-jest": "^29.7.0",
-    "install": "^0.13.0",
-    "npm": "^10.4.0"
-  },
-  "dependencies": {
-    "node-fetch": "^3.3.2"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.jsx?$": "babel-jest"
-    }
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "jest": "^27.5.1"
   }
 }

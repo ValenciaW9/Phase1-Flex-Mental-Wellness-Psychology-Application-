@@ -1,44 +1,29 @@
-const express = require('express');
-const app = express();
-const path = require('path');
-const fetch = require('node-fetch');
-
-const port = 3000;
-
-app.use(express.static('html'));
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'html', 'index.html'));
-});
-
-async function handleApiDataRequest(req, res) {
-  const domain = req.params.domain;
-  const url = `https://api.builtwith.com/free1/api.json?KEY=79664c18-3279-4ec2-94d5-bbace2ddd10f&LOOKUP=${domain}`;
-
-  const options = {
-    method: 'GET',
+const fetchButton = document.getElementById('fetchButton');
+fetchButton.addEventListener('click', () => {
+  fetch('https://api.symanto.net/personality', {
+    method: 'POST',
     headers: {
-      'API-Key': '79664c18-3279-4ec2-94d5-bbace2ddd10f'
-    }
-  };
-
-  try {
-    const response = await fetch(url, options);
-    const result = await response.json();
-    res.json(result);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-}
-
-app.get('/api/data/:domain', (req, res) => {
-  handleApiDataRequest(req, res).catch((error) => {
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
-  });
-});
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+      'accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify([
+      {
+        id: 1,
+        text: 'I love the service',
+        language: 'en',
+      },
+    ]),
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to fetch data from API');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('API call failed:', error.message);
+    });
 });
